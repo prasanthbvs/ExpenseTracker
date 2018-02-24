@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+    <div class='col-sm-12' style="min-height: 550px; text-align:center; padding-top:10%;">
+      
+      <div class="loginmodule">
+        <form action="/login/" method="post">
+        {% csrf_token %}
+        <div class="loginform">
+          <h4>Login to your account </h4>
+          {{form.username}}
+          {{form.password}}
+          <button name='submit' id='submit'>Submit</button>
+        </div>
+        </form>
+                            
+      </div>
+      
+      
+    </div>
+
+{% endblock %}

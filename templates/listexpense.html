@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+
+<div class="container" style="min-height:450px;margin-top:100px;font-size:14px">
+<div class='col-sm-12'>
+	<div class='col-sm-9'>
+		<h3 style='padding-top:20px; padding-left:20px;'>Your Expenses</h3>
+	</div>
+	<div style='margin-top:25px;text-align:right;' class='col-sm-3'>
+		<a  href='/addexpense/'>Add New Expense</a>
+	</div>
+
+</div>
+<hr style='margin-top:50px;' />
+<table class='table table-stripped table-bordered'>
+	<thead>
+		<tr>
+			<td>Title</td>
+			<td>Expensed On</td>
+			<td>Total Amount</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for exp in expenses %}
+			<tr>
+				<td><a href='/viewexpense/{{exp.id}}/'>{{exp.title}}</a></td>
+				<td>{{exp.expensed_on}}</td>
+				<td>{{exp.amount}}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+
+<div class="container" style="min-height:450px;margin-top:100px;font-size:14px">
+<div class='col-sm-12'>
+	<div class='col-sm-9'>
+		<h3 style='padding-top:20px; padding-left:20px;'>View User</h3>
+	</div>
+	<div style='margin-top:25px;text-align:right;' class='col-sm-3'>
+		<a  href='/listusers/'>List Users</a>
+	</div>
+
+</div>
+<hr style='margin-top:50px;' />
+<table class='table table-stripped table-bordered'>
+	<thead>
+		<tr>
+			<td>Username</td>
+			<td>E-Mail</td>
+			<td>First Name</td>
+			<td>Last Name</td>
+			<td>Active Status</td>
+		</tr>
+	</thead>
+	<tbody>
+			<tr>
+				<td>{{user.username}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.first_name}}</td>
+				<td>{{user.last_name}}</td>
+				<td>{{user.is_active}}</td>
+			</tr>
+	</tbody>
+</table>
+
+</div>
+{% endblock %}

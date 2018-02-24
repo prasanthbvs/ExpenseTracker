@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block head_content %}
+    
+  {% endblock %}
+
+{% block body_content %}
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <h1 class="text-uppercase mb-0">Expense Tracker</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">A Tracking Application for your all kind of Expenses</h2>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section class="portfolio" id="users">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Users</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+          <div class="col-sm-offset-1 col-md-10">
+            <h3 align="center">As an Admin you are privileged to add USERS, List and View all Existing USERS... </h3>
+            <h4 align="center">To Add / View / List USERS See <a href="/listusers/">Users</a> page.</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-primary text-white mb-0" id="expenses">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">Expenses</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+        	<div class="col-sm-offset-1 col-md-10">
+          		<h3 align="center">As an User you are privileged to add your Day to Day Expenses, List and View all your Expenses... </h3>
+         		<h4 align="center">To Add / View / List your Expenses See <a style='color:#ffffff' href="/listusers/">Expenses</a> page.</h4>
+         	</div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+    

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+
+<div class="container" style="min-height:450px;margin-top:100px;font-size:14px">
+<div class='col-sm-12'>
+	<div class='col-sm-9'>
+		<h3 style='padding-top:20px; padding-left:20px;'>View Expense</h3>
+	</div>
+	<div style='margin-top:25px;text-align:right;' class='col-sm-3'>
+		<a  href='/listexpenses/'>List Expenses</a>
+	</div>
+
+</div>
+<hr style='margin-top:50px;' />
+<table class='table table-stripped table-bordered'>
+	<thead>
+		<tr>
+			<td>Title</td>
+			<td>Expensed On</td>
+			<td>Description</td>
+			<td>Total Cost</td>
+		</tr>
+	</thead>
+	<tbody>
+			<tr>
+				<td>{{expense.title}}</td>
+				<td>{{expense.expensed_on}}</td>
+				<td>{{expense.description}}</td>
+				<td>{{expense.amount}}</td>
+			</tr>
+	</tbody>
+</table>
+
+<table class='table table-stripped table-bordered'>
+	<thead>
+		<tr>
+			<td>Product Name</td>
+			<td>Product Type</td>
+			<td>Quantity</td>
+			<td>Price</td>
+		</tr>
+	</thead>
+	<tbody>
+	{% for prod in expproducts %}
+			<tr>
+				<td>{{prod.product_name}}</td>
+				<td>{{prod.product_type}}</td>
+				<td>{{prod.quantity}}</td>
+				<td>{{prod.cost}}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+</div>
+{% endblock %}

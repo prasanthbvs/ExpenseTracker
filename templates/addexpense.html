@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+
+{% block head_content %}
+    <link href="/static/css/jquery.datetimepicker.min.css" rel="stylesheet">
+  {% endblock %}
+{% block body_content %}
+
+<div class="container" style="min-height:450px;margin-top:100px;">
+<h3 style='padding-top:20px; padding-left:20px;'>Add Expense</h3>
+<hr/>
+<form action="/addexpense/" method='post'>
+	{% csrf_token %}
+	<div class='col-sm-12' style='padding:10px;'>
+		<div class='col-sm-3'>
+			<h5>Expensed On:</h5>
+		</div>
+		<div class='col-sm-9'>
+			{{form.expensedon}}
+		</div>
+	</div>
+	<div class='col-sm-12' style='padding:10px;'>
+		<div class='col-sm-3'>
+			<h5>Total Expense Cost:</h5>
+		</div>
+		<div class='col-sm-9'>
+			{{form.price}}
+		</div>
+	</div>
+	<div class='col-sm-12' style='padding:10px;'>
+		<div class='col-sm-3'>
+			<h5>Title:</h5>
+		</div>
+		<div class='col-sm-9'>
+			{{form.title}}
+		</div>
+	</div>
+	<div class='col-sm-12' style='padding:10px;'>
+		<div class='col-sm-3'>
+			<h5>Description:</h5>
+		</div>
+		<div class='col-sm-9'>
+			{{form.description}}
+		</div>
+	</div>
+
+
+
+    <div class="col-sm-12 form-group">    
+    	<table class="table table-bordered tableform" style="">
+          	<thead>
+          		<tr>
+              		<th>Product Name</th>
+              		<th>Product Type</th>
+              		<th>Quantity</th>
+              		<th>Cost</th>
+              		<th></th>
+             	</tr>
+          	</thead>
+          	<tbody>
+            	{{ productformset.management_form }}
+            	{% for frm in productformset %}
+              		<tr class="contentformset">
+                		<td class="col-sm-4 inlinetableform">
+                  			{{frm.productname}}
+                  			{% if frm.productname.errors %}
+                    			{% for error in frm.productname.errors %}
+                      				<p class='customerror'>This field is Required</p>
+                    			{% endfor %}
+                  			{% endif %}
+                		</td>
+                 
+                <td class="col-sm-4 inlinetableform">
+                  {{frm.producttype}}
+                  {% if frm.producttype.errors %}
+                    {% for error in frm.producttype.errors %}
+                      <p class='customerror'>This field is Required</p>
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                
+                <td class="col-sm-2 inlinetableform">
+                  {{frm.quantity}}
+                  {% if frm.quantity.errors %}
+                    {% for error in quantity.count.errors %}
+                      <p class='customerror'>This field is Required</p>
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                <td class="col-sm-3 inlinetableform">
+                  {{frm.price}}
+                  {% if frm.price.errors %}
+                    {% for error in price.count.errors %}
+                      <p class='customerror'>This field is Required</p>
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                <td class="col-sm-1 inlinetableform">
+                  
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <input class="btn btn-default" type="submit" name="submit" value="Save">
+        <input class="btn btn-default" type="submit" name="submit" value="Cancel">
+      </div>
+
+
+
+
+</form>
+</div>
+{% endblock %}
+
+{%block script_content%}
+
+<script src="/static/js/jqueryformset.js" ></script>
+<script src="/static/js/jquery.datetimepicker.full.min.js" > </script>
+<script>
+  /////// for formset add and delete ////////
+  $('.contentformset').formset({
+    addText: 'add new',
+    deleteText: '<i class="fa fa-trash" aria-hidden="true"></i>',
+    addCssClass:'btn btn-primary btn-xs addnewrow',
+  });
+</script>
+<script>
+  
+  
+  $(function () {
+      $("#id_expensedon").datetimepicker({
+            format:'Y-m-d H:i',
+				step:5,
+				timepicker:false,
+                scrollMonth:false,
+                scrollTime:false,
+                scrollInput:false,
+                maxDate:0,
+				//mask:true,
+            });
+		   $('#icaldate').click(function(){
+				$('#id_date').datetimepicker('show'); //support hide,show and destroy command
+			});
+      
+    });
+</script>	 
+{%endblock%}
+    

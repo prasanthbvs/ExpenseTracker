@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body_content %}
+<div class="container" style="min-height:450px;margin-top:100px;">
+<h3 style='padding-top:20px; padding-left:20px;'>Add User</h3>
+<hr/>
+<form action="/adduser/" method='post'>
+{% csrf_token %}
+<div class='col-sm-12' style='padding:10px;'>
+	<div class='col-sm-3'>
+	<h5>Enter Username:</h5>
+	</div>
+	<div class='col-sm-9'>
+		{{form.username}}
+	</div>
+</div>
+<div class='col-sm-12' style='padding:10px;'>
+	<div class='col-sm-3'>
+	<h5>Enter Password:</h5>
+	</div>
+	<div class='col-sm-9'>
+		{{form.password}}
+	</div>
+</div>
+<div class='col-sm-12' style='padding:10px;'>
+	<div class='col-sm-3'>
+	<h5>Enter First Name:</h5>
+	</div>
+	<div class='col-sm-9'>
+		{{form.fname}}
+	</div>
+</div>
+<div class='col-sm-12' style='padding:10px;'>
+	<div class='col-sm-3'>
+	<h5>Enter Last Name:</h5>
+	</div>
+	<div class='col-sm-9'>
+		{{form.lname}}
+	</div>
+</div>
+<div class='col-sm-12' style='padding:10px;'>
+	<div class='col-sm-3'>
+	<h5>Enter E-Mail ID:</h5>
+	</div>
+	<div class='col-sm-9'>
+		{{form.email}}
+	</div>
+</div>
+
+<button class='btn btn-primary' name='submit' id='submit'>Submit</button>
+</form>
+</div>
+{% endblock %}
